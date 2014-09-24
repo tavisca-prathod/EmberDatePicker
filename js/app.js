@@ -21,10 +21,11 @@ App.DatePickerView = Ember.View.extend({
     inputDate: null,
     tagName : 'input',
     maxDate : "",
+    showWeek : false,
     classNames: ['ui-datepicker'],
     didInsertElement: function() {
         var self = this;
-        this.$().datepicker({dateFormat:"mm-dd-yy",maxDate: this.get('maxDate')});
+        this.$().datepicker({dateFormat:"mm-dd-yy",maxDate: this.get('maxDate'),showWeek: this.get('showWeek') });
         this.$().datepicker("setDate",self.get('inputDate'));
         this.$().datepicker("show");
     }.observes('inputDate'),
