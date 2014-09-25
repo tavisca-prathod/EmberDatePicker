@@ -24,9 +24,14 @@ App.DatePickerView = Ember.View.extend({
     showWeek : false,
     stepMonths : 1,
     dateFormat : "",
+    showAnim : "show",
+    attributeBindings: ['style'],
+    style : function() {
+        return "height: 0px; width:0px; border: 0px;";
+    },
     didInsertElement: function() {
         var self = this;
-        this.$().datepicker({dateFormat:this.get('dateFormat'),maxDate: this.get('maxDate'),showWeek: this.get('showWeek'),stepMonths: this.get('stepMonths')});
+        this.$().datepicker({dateFormat:this.get('dateFormat'),maxDate: this.get('maxDate'),showWeek: this.get('showWeek'),stepMonths: this.get('stepMonths'),showAnim: this.get('showAnim')});
         this.$().datepicker("setDate",self.get('inputDate'));
         this.$().datepicker("show");
     }.observes('inputDate'),
