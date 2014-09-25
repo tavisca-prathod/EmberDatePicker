@@ -4,7 +4,7 @@
 </head>
 <body>
   <script type="text/x-handlebars">
-  {{view App.DatePickerView maxDate="+1m +1w" showWeek=true stepMonths=3}}
+  {{view App.DatePickerView showWeek=true stepMonths=3 dateFormat="yy-mm-dd"}}
 </script>
 <script type="text/x-handlebars" id='datePicker'>
     {{view.inputDate}}
