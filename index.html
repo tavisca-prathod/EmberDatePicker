@@ -1,10 +1,13 @@
 <html>
 <head>
   <title>sample</title>
+  <link rel="stylesheet" type="text/css" href="css/jquery-ui-1.9.2.min.css">
 </head>
 <body>
   <script type="text/x-handlebars">
-  {{view App.DatePickerView showWeek=true stepMonths=3 dateFormat="yy-mm-dd"}}
+  <div>
+  	{{view App.DatePickerView showWeek=true stepMonths=3 dateFormat="yy-mm-dd"}}
+  </div>
 </script>
 <script type="text/x-handlebars" id='datePicker'>
     {{view.inputDate}}

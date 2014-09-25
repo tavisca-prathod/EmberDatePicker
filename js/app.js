@@ -24,7 +24,6 @@ App.DatePickerView = Ember.View.extend({
     showWeek : false,
     stepMonths : 1,
     dateFormat : "",
-    classNames: ['ui-datepicker'],
     didInsertElement: function() {
         var self = this;
         this.$().datepicker({dateFormat:this.get('dateFormat'),maxDate: this.get('maxDate'),showWeek: this.get('showWeek'),stepMonths: this.get('stepMonths')});
