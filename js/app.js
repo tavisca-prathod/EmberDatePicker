@@ -12,31 +12,36 @@ App.DatePickerRoute = Em.Route.extend({
     }
 });
 
-var container = Ember.ContainerView.create();
-container.append();
-
-
 
 App.DatePickerView = Ember.View.extend({
     inputDate : null,
     tagName : 'input',
-    maxDate : "",
-    showWeek : false,
     stepMonths : 1,
     dateFormat : "",
     showAnim : "show",
-    attributeBindings: ['style'],
-    style : function() {
-        return "height: 0px; width:0px; border: 0px;";
-    },
+    customOptions : ["showWeek","maxDate","onSelect"],
+
     didInsertElement: function() {
         var self = this;
-        this.$().datepicker({dateFormat:this.get('dateFormat'),maxDate: this.get('maxDate'),showWeek: this.get('showWeek'),stepMonths: this.get('stepMonths'),showAnim: this.get('showAnim')});
-        this.$().datepicker("setDate",self.get('inputDate'));
+        this.$().datepicker();
+        var optionIndex = 0;
+        for(optionIndex; optionIndex < (this.get('customOptions')).length; optionIndex++){
+            customOption = (this.get('customOptions'))[optionIndex];
+            if(typeof (this.get(customOption)) !== 'undefined'){
+                this.$().datepicker( "option", customOption, (this.get(customOption)));
+            }
+        }
+
         this.$().datepicker("show");
-    }.observes('inputDate'),
+    },
+
+    showWeek : true,
+    maxDate : '+1m +1w',
 
     change : function() {
         this.set('inputDate',this.$().datepicker("getDate"));
-    }
+    },
+     onSelect : function(dateText, inst) {
+        console.log("dfdfdfd");
+     }
 });
